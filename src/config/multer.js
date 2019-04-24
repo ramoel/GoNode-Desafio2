@@ -6,8 +6,8 @@ const aws = require('aws-sdk')
 const bodyParser = require('body-parser')
 
 aws.config.update({
-  accessKeyId: 'AKIAIMW7QFP4SIOFRXCA',
-  secretAccessKey: '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',
+  accessKeyId: 'key',
+  secretAccessKey: 'key2',
   region: 'us-east-1'
 })
 
