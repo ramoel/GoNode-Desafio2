@@ -6,7 +6,7 @@ const aws = require('aws-sdk')
 const bodyParser = require('body-parser')
 
 aws.config.update({
-  accessKeyId: 'key',
+  accessKeyId: 'key1',
   secretAccessKey: 'key2',
   region: 'us-east-1'
 })
@@ -17,6 +17,11 @@ module.exports = {
   storage: multerS3({
     s3: s3,
     bucket: 'vizzu-uploads',
+    metadata: function (req, file, cb) {
+      cb(null, {
+        fieldName: file.fieldname
+      })
+    },
     key: function (req, file, cb) {
       crypto.randomBytes(16, (err, raw) => {
         if (err) return cb(err)

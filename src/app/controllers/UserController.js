@@ -6,9 +6,14 @@ class UserController {
   }
 
   async store (req, res) {
-    const { filename } = req.file
-
-    await User.create({ ...req.body, avatar: filename })
+    const avatarDefault =
+      'https://s3.amazonaws.com/vizzu-uploads/public/avatar.svg'
+    if (req.file) {
+      const { location } = req.file
+      await User.create({ ...req.body, avatar: location })
+    } else {
+      await User.create({ ...req.body, avatar: avatarDefault })
+    }
 
     return res.redirect('/')
   }
