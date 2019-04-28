@@ -6,8 +6,8 @@ const aws = require('aws-sdk')
 const bodyParser = require('body-parser')
 
 aws.config.update({
-  accessKeyId: 'key1',
-  secretAccessKey: 'key2',
+  accessKeyId: 'SUA-ACCESSKEYID',
+  secretAccessKey: 'SUA-SECRETACCESSKEY',
   region: 'us-east-1'
 })
 
@@ -16,7 +16,7 @@ const s3 = new aws.S3()
 module.exports = {
   storage: multerS3({
     s3: s3,
-    bucket: 'vizzu-uploads',
+    bucket: 'SEU-BUCKET',
     metadata: function (req, file, cb) {
       cb(null, {
         fieldName: file.fieldname
